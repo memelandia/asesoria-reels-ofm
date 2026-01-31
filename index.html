@@ -1573,16 +1573,15 @@
         // ============================================
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -1593,24 +1592,28 @@
         animatedElements.forEach((el) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(40px)';
-            el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
         });
 
         // ============================================
-        // PARALLAX EFFECT ON MOUSE MOVE
+        // PARALLAX EFFECT ON MOUSE MOVE (Optimizado)
         // ============================================
+        let isMoving = false;
         document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.module-card, .pricing-card, .problem-card');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            cards.forEach((card, index) => {
-                const depth = (index % 3 + 1) * 10;
-                const moveX = (x - 0.5) * depth;
-                const moveY = (y - 0.5) * depth;
-                card.style.transform = `perspective(1000px) rotateX(${moveY}deg) rotateY(${moveX}deg)`;
-            });
+            if (!isMoving && window.innerWidth > 768) {
+                isMoving = true;
+                requestAnimationFrame(() => {
+                    const cards = document.querySelectorAll('.module-card, .pricing-card, .problem-card');
+                    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                    
+                    cards.forEach((card) => {
+                        card.style.transform = `perspective(1000px) rotateX(${-y * 0.1}deg) rotateY(${x * 0.1}deg)`;
+                    });
+                    isMoving = false;
+                });
+            }
         });
 
         // ============================================
@@ -1649,32 +1652,46 @@
         });
 
         // ============================================
-        // GRADIENT CURSOR EFFECT
+        // GRADIENT CURSOR EFFECT (Optimizado)
         // ============================================
-        let cursorGlow = document.createElement('div');
-        cursorGlow.style.cssText = `
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        `;
-        document.body.appendChild(cursorGlow);
+        if (window.innerWidth > 768) {
+            let cursorGlow = document.createElement('div');
+            cursorGlow.style.cssText = `
+                position: fixed;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            document.body.appendChild(cursorGlow);
 
-        document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-            cursorGlow.style.opacity = '1';
-        });
+            let cursorX = 0, cursorY = 0;
+            let glowX = 0, glowY = 0;
 
-        document.addEventListener('mouseleave', () => {
-            cursorGlow.style.opacity = '0';
-        });
+            document.addEventListener('mousemove', (e) => {
+                cursorX = e.clientX;
+                cursorY = e.clientY;
+                cursorGlow.style.opacity = '1';
+            });
+
+            function updateGlow() {
+                glowX += (cursorX - glowX) * 0.1;
+                glowY += (cursorY - glowY) * 0.1;
+                cursorGlow.style.left = glowX + 'px';
+                cursorGlow.style.top = glowY + 'px';
+                requestAnimationFrame(updateGlow);
+            }
+            updateGlow();
+
+            document.addEventListener('mouseleave', () => {
+                cursorGlow.style.opacity = '0';
+            });
+        }
 
         // ============================================
         // BUTTON RIPPLE EFFECT
@@ -1719,16 +1736,22 @@
             height: 3px;
             background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             z-index: 10000;
-            transition: width 0.1s ease;
             box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
         `;
         document.body.appendChild(progressBar);
 
+        let scrollTicking = false;
         window.addEventListener('scroll', () => {
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            progressBar.style.width = scrolled + '%';
-        });
+            if (!scrollTicking) {
+                window.requestAnimationFrame(() => {
+                    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (window.scrollY / windowHeight) * 100;
+                    progressBar.style.width = scrolled + '%';
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
+            }
+        }, { passive: true });
 
         // ============================================
         // TYPING EFFECT FOR HEADER
@@ -1751,111 +1774,75 @@
         }
 
         // ============================================
-        // TESTIMONIAL CARDS TILT EFFECT
+        // TESTIMONIAL CARDS TILT EFFECT (Optimizado)
         // ============================================
-        document.querySelectorAll('.testimonial-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transition = 'transform 0.1s ease';
-            });
-            
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'transform 0.1s ease';
+                });
                 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
                 
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                    this.style.transition = 'transform 0.4s ease';
+                });
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-                this.style.transition = 'transform 0.4s ease';
-            });
-        });
-
-        // ============================================
-        // ANIMATE NUMBERS IN TESTIMONIALS
-        // ============================================
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const text = entry.target.textContent;
-                    const numbers = text.match(/\d+/g);
-                    if (numbers) {
-                        numbers.forEach(num => {
-                            const target = parseInt(num);
-                            if (target > 10) {
-                                let current = 0;
-                                const increment = target / 50;
-                                const timer = setInterval(() => {
-                                    current += increment;
-                                    if (current >= target) {
-                                        current = target;
-                                        clearInterval(timer);
-                                    }
-                                    entry.target.textContent = entry.target.textContent.replace(
-                                        /\d+/,
-                                        Math.floor(current) + (num.includes('K') ? 'K' : '')
-                                    );
-                                }, 30);
-                            }
-                        });
-                        statsObserver.unobserve(entry.target);
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.stats').forEach(stat => {
-            statsObserver.observe(stat);
-        });
-
-        // ============================================
-        // FLOATING PARTICLES IN BACKGROUND
-        // ============================================
-        function createFloatingParticles() {
-            const particlesContainer = document.createElement('div');
-            particlesContainer.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: 1;
-                overflow: hidden;
-            `;
-            document.body.appendChild(particlesContainer);
-
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.style.cssText = `
-                    position: absolute;
-                    width: ${Math.random() * 3 + 1}px;
-                    height: ${Math.random() * 3 + 1}px;
-                    background: rgba(0, 255, 136, ${Math.random() * 0.3 + 0.1});
-                    border-radius: 50%;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation: float ${Math.random() * 10 + 10}s infinite ease-in-out;
-                    animation-delay: ${Math.random() * 5}s;
-                `;
-                particlesContainer.appendChild(particle);
-            }
         }
 
-        // Crear partículas solo en desktop
-        if (window.innerWidth > 768) {
+        // ============================================
+        // FLOATING PARTICLES IN BACKGROUND (Solo Desktop)
+        // ============================================
+        if (window.innerWidth > 1024) {
+            function createFloatingParticles() {
+                const particlesContainer = document.createElement('div');
+                particlesContainer.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    z-index: 1;
+                    overflow: hidden;
+                `;
+                document.body.appendChild(particlesContainer);
+
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: ${Math.random() * 3 + 1}px;
+                        height: ${Math.random() * 3 + 1}px;
+                        background: rgba(0, 255, 136, ${Math.random() * 0.3 + 0.1});
+                        border-radius: 50%;
+                        left: ${Math.random() * 100}%;
+                        top: ${Math.random() * 100}%;
+                        animation: float ${Math.random() * 10 + 10}s infinite ease-in-out;
+                        animation-delay: ${Math.random() * 5}s;
+                    `;
+                    particlesContainer.appendChild(particle);
+                }
+            }
+
             createFloatingParticles();
         }
 
         // ============================================
-        // ADD RIPPLE ANIMATION TO CSS
+        // ADD ANIMATIONS TO CSS
         // ============================================
         const style = document.createElement('style');
         style.textContent = `
@@ -1865,40 +1852,14 @@
                     opacity: 0;
                 }
             }
+            
+            * {
+                -webkit-overflow-scrolling: touch;
+            }
         `;
         document.head.appendChild(style);
 
-        // ============================================
-        // LAZY LOADING FOR PERFORMANCE
-        // ============================================
-        if ('IntersectionObserver' in window) {
-            const lazyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('loaded');
-                    }
-                });
-            });
-
-            document.querySelectorAll('section').forEach(section => {
-                lazyObserver.observe(section);
-            });
-        }
-
-        // ============================================
-        // PERFORMANCE OPTIMIZATION
-        // ============================================
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        console.log('🚀 Asesoría Reels OFM - All effects loaded!');
+        console.log('🚀 Asesoría Reels OFM - All effects loaded and optimized!');
     </script>
 </body>
 </html>
