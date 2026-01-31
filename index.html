@@ -15,10 +15,10 @@
         }
 
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-darker: #050505;
-            --bg-card: #141414;
-            --bg-card-hover: #1a1a1a;
+            --bg-dark: #0d2626;
+            --bg-darker: #0a1f1f;
+            --bg-card: #153535;
+            --bg-card-hover: #1a3d3d;
             --accent-primary: #00ff88;
             --accent-secondary: #00d4ff;
             --accent-pink: #ff0080;
@@ -408,7 +408,9 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 16px;
-            opacity: 0.3;
+            opacity: 1;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 136, 0.4));
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
         .module-card h3 {
@@ -925,6 +927,15 @@
             }
             50% {
                 transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 136, 0.4));
+            }
+            to {
+                filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.8)) drop-shadow(0 0 60px rgba(0, 255, 136, 0.6));
             }
         }
 
