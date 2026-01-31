@@ -1,0 +1,22 @@
+# Archives and videos
+*.mp4
+*.mov
+*.avi
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# HTML exports from Notion (keep only the main landing page)
+*27b1f1fa4f1a*.html
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

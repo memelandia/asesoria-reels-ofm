@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoría Reels OFM | Domina Instagram y Multiplica tus Ventas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .header .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* Hero CTA */
+        .hero-cta {
+            background: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-cta h2 {
+            font-size: 2.5rem;
+            color: #2d2d2d;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .hero-cta .description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: #f9f9f9;
+            padding: 80px 20px;
+        }
+
+        .problem-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2d2d2d;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #764ba2;
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+        }
+
+        .solution-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #2d2d2d;
+        }
+
+        .solution-section .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .benefits-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d2d2d;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .benefit-item .emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #764ba2;
+        }
+
+        .benefit-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Modules Section */
+        .modules-section {
+            background: #f9f9f9;
+            padding: 80px 20px;
+        }
+
+        .modules-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d2d2d;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .module-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .module-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2d2d2d;
+        }
+
+        .module-card ul {
+            list-style: none;
+            color: #666;
+        }
+
+        .module-card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .module-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .testimonials-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d2d2d;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .testimonial-info h4 {
+            color: #2d2d2d;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info .stats {
+            color: #764ba2;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .testimonial-text {
+            color: #666;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 20px;
+            color: white;
+        }
+
+        .pricing-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            color: #2d2d2d;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured {
+            border: 5px solid #ffd700;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: '⭐ MÁS POPULAR ⭐';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffd700;
+            color: #2d2d2d;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #764ba2;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: #2d2d2d;
+        }
+
+        .pricing-card .price-note {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pricing-button {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* For Who Section */
+        .for-who-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .for-who-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d2d2d;
+        }
+
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .for-who-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #764ba2;
+        }
+
+        .for-who-item {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+
+        .for-who-item .emoji {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .for-who-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .not-for {
+            opacity: 0.7;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: #f9f9f9;
+            padding: 80px 20px;
+        }
+
+        .faq-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d2d2d;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #764ba2;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d2d2d;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-cta h2 {
+                font-size: 2rem;
+            }
+
+            .solution-section h2 {
+                font-size: 2rem;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .for-who-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <section class="header">
+        <div class="container">
+            <h1>⚡ ASESORÍA REELS OFM ⚡</h1>
+            <p class="subtitle">
+                ¿Listo para <span class="highlight">dominar Instagram</span> y hacer crecer tus cuentas OFM como nunca?
+            </p>
+        </div>
+    </section>
+
+    <!-- Hero CTA -->
+    <section class="hero-cta">
+        <div class="container">
+            <h2>Las agencias de marketing cuestan un dineral y muchas veces... ¿qué pasa?<br>Poco resultado.</h2>
+            <p class="description">
+                La realidad es que muchas agencias tienen muchos clientes, poco enfoque en cada cuenta y usan estrategias genéricas. 
+                El resultado: contenido que no conecta, reels sin alcance y cuentas estancadas. <strong>Nada eficiente.</strong>
+            </p>
+            <p class="description" style="font-weight: 600; color: #764ba2; font-size: 1.4rem;">
+                Por eso nací esta asesoría: para que tú tomes las riendas de tus cuentas y las hagas EXPLOTAR EN INSTAGRAM.
+            </p>
+            <p class="description">
+                Porque tú y yo sabemos que NADIE conoce tu negocio como tú, y nadie le va a echar más ganas que tú. 💪
+            </p>
+            <a href="#pricing" class="cta-button">¡LO QUIERO! 🔥</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2>¿Te suena familiar? 😰</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">📉</div>
+                    <h3>Alcance estancado</h3>
+                    <p>Tus reels no llegan a nadie. El algoritmo parece que te ignora y tus cuentas no crecen.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">😫</div>
+                    <h3>No sabes qué grabar</h3>
+                    <p>Te quedas sin ideas constantemente. Copias a la competencia pero no funciona igual.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">💸</div>
+                    <h3>Gastas sin resultados</h3>
+                    <p>Has invertido en agencias y "expertos" sin ver el retorno que esperabas.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">⏰</div>
+                    <h3>Pierdes tiempo valioso</h3>
+                    <p>Pasas horas creando contenido que no convierte ni atrae suscriptores.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">😵</div>
+                    <h3>Estás confundido</h3>
+                    <p>Hay demasiada información contradictoria. No sabes qué estrategia seguir.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📱</div>
+                    <h3>Tu competencia te gana</h3>
+                    <p>Ves cuentas similares explotando mientras las tuyas están estancadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2>La Solución que Estabas Buscando 🎯</h2>
+            <p class="subtitle">
+                Asesoría completa y personalizada con todas las estrategias, blueprints y técnicas probadas 
+                para crear reels virales que atraigan, conviertan y multipliquen tus ventas en OFM.
+            </p>
+            <a href="#pricing" class="cta-button">¡Quiero Transformar Mis Resultados! 🚀</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Lo que conseguirás con esta asesoría ✨</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="emoji">👀</span>
+                    <h3>Aprende a hacer contenido que SÍ llegue a tu cliente ideal</h3>
+                    <p>Domina los ingredientes de la viralidad y crea reels que el algoritmo ama.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">📈</span>
+                    <h3>Reactiva cuentas estancadas</h3>
+                    <p>Sin gastar en agencias. Aplica estrategias probadas que generan resultados reales.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">⚡</span>
+                    <h3>Genera reels rápidos y brutales</h3>
+                    <p>Con blueprints listos para usar: Cocina, Gym, Posing, Skit, Q&A y más.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">💕</span>
+                    <h3>Crea tu propia estrategia</h3>
+                    <p>Mientras implementas la asesoría, desarrollas un plan personalizado para cada modelo.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">💸</span>
+                    <h3>Convierte views en ventas</h3>
+                    <p>Aprende a transformar seguidores en suscriptores de pago con contenido estratégico.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">🎯</span>
+                    <h3>Domina el algoritmo</h3>
+                    <p>Entiende cómo funciona Instagram y haz que trabaje a tu favor, no en tu contra.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="modules-section">
+        <div class="container">
+            <h2>Contenido de la Asesoría 📦</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-number">01</div>
+                    <h3>Ingredientes de la Viralidad</h3>
+                    <ul>
+                        <li>Los 8 ingredientes del contenido viral</li>
+                        <li>Framework de hooks efectivos</li>
+                        <li>Técnicas visuales y verbales</li>
+                        <li>Contenido EWOC (Efectivo Sin Contexto)</li>
+                        <li>Estrategias de retención</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">02</div>
+                    <h3>Blueprints Verticales Completos</h3>
+                    <ul>
+                        <li>Blueprint Vertical Cocina</li>
+                        <li>Blueprint Vertical Gym/Yoga</li>
+                        <li>Blueprint Vertical Posing</li>
+                        <li>Blueprint Vertical Skit</li>
+                        <li>Blueprint Vertical Q&A</li>
+                        <li>Blueprint Vertical Omegle</li>
+                        <li>Blueprint Vertical Oficina</li>
+                        <li>Blueprint Captions + TTS</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">03</div>
+                    <h3>Estrategia y Búsqueda Viral</h3>
+                    <ul>
+                        <li>Cómo encontrar contenido viral</li>
+                        <li>Adaptación de tendencias</li>
+                        <li>Análisis de competencia</li>
+                        <li>Contexto del mercado actual</li>
+                        <li>Aprovecha tendencias correctamente</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">04</div>
+                    <h3>Branding y Posicionamiento</h3>
+                    <ul>
+                        <li>Tests de branding (Halloween + Tip of Tongue)</li>
+                        <li>Cómo elegir un branding único</li>
+                        <li>Encontrar inspiración</li>
+                        <li>Energía y carácter en cámara</li>
+                        <li>Consistencia visual</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">05</div>
+                    <h3>Content Director Training</h3>
+                    <ul>
+                        <li>Responsabilidades y métricas clave</li>
+                        <li>Habilidades esenciales de CD</li>
+                        <li>Marco general de trabajo</li>
+                        <li>Comunicación efectiva con modelos</li>
+                        <li>Frameworks conversacionales</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">06</div>
+                    <h3>Producción y Ejecución</h3>
+                    <ul>
+                        <li>Setup de videollamadas profesionales</li>
+                        <li>Preparación de sesiones de grabación</li>
+                        <li>Guías de producción por vertical</li>
+                        <li>Mejores prácticas de filmación</li>
+                        <li>Refuerzo de buen comportamiento</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">07</div>
+                    <h3>Elementos Trigger y Psicología</h3>
+                    <ul>
+                        <li>Dinero y comparaciones sociales</li>
+                        <li>Sexo, amor y dating</li>
+                        <li>Supervivencia y bienestar</li>
+                        <li>Exclusividad y poder</li>
+                        <li>Agitación y controversia estratégica</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">08</div>
+                    <h3>BONUS: Estrategias Avanzadas</h3>
+                    <ul>
+                        <li>Fake Stream con Famosos</li>
+                        <li>Vertical Podcast</li>
+                        <li>Ideas de contenido que enganchan</li>
+                        <li>Actualizaciones constantes</li>
+                        <li>Soporte y seguimiento</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>Resultados Reales de Quienes Ya lo Implementaron 🤩</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">M</div>
+                        <div class="testimonial-info">
+                            <h4>Miguel R.</h4>
+                            <p class="stats">3 cuentas • +250K seguidores en 2 meses</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Antes gastaba $3,000/mes en una agencia sin ver resultados. Con esta asesoría, 
+                        en 8 semanas nuestras 3 cuentas explotaron. Una de ellas pasó de 12K a 89K seguidores. 
+                        Los suscriptores de OF se triplicaron."
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Andrea S.</h4>
+                            <p class="stats">Content Director • 7 modelos</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Los blueprints son oro puro. Antes perdía horas pensando qué grabar. 
+                        Ahora en 30 minutos planeo la semana completa para todas mis modelos. 
+                        Y lo mejor: los reels están funcionando muchísimo mejor."
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">C</div>
+                        <div class="testimonial-info">
+                            <h4>Carlos M.</h4>
+                            <p class="stats">Agencia OFM • 12 modelos</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Teníamos un CD que no daba resultados. Con este material lo capacité y 
+                        ahora es una máquina. Las métricas de todas las cuentas subieron: 
+                        más alcance, más engagement, más conversiones. Inversión recuperada en la primera semana."
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">L</div>
+                        <div class="testimonial-info">
+                            <h4>Laura P.</h4>
+                            <p class="stats">Modelo independiente • +180K seguidores</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Manejaba mi cuenta sola pero estaba perdida. Esta asesoría me dio claridad total. 
+                        Ahora sé exactamente qué grabar, cómo hacerlo y por qué funciona. 
+                        Mis ingresos de OF aumentaron un 340% en 3 meses."
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">D</div>
+                        <div class="testimonial-info">
+                            <h4>David L.</h4>
+                            <p class="stats">Manager • 5 cuentas</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "La sección de ingredientes de viralidad cambió mi forma de ver el contenido. 
+                        Ahora entiendo POR QUÉ un reel funciona y puedo replicarlo. 
+                        Todas nuestras cuentas tienen mejor performance que nunca."
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <h4>Sofía V.</h4>
+                            <p class="stats">CD Freelance • 4 clientas</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Como CD freelance, esta asesoría me profesionalizó completamente. 
+                        Mis clientas están felices con los resultados y ahora puedo cobrar más 
+                        porque entrego un trabajo de mucho mayor calidad."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2>Invierte en el Crecimiento de Tu Negocio 💎</h2>
+            <p class="pricing-subtitle">Elige el plan que mejor se adapte a ti</p>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Pago Único</h3>
+                    <div class="price">$497</div>
+                    <p class="price-note">Un solo pago</p>
+                    <ul class="pricing-features">
+                        <li>Acceso inmediato completo</li>
+                        <li>Todos los módulos y blueprints</li>
+                        <li>Acceso de por vida</li>
+                        <li>Todas las actualizaciones futuras</li>
+                        <li>Material descargable</li>
+                        <li>Soporte por 30 días</li>
+                    </ul>
+                    <a href="#contacto" class="pricing-button">¡Lo Quiero Ahora! 🔥</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Plan VIP</h3>
+                    <div class="price">$997</div>
+                    <p class="price-note">Inversión premium</p>
+                    <ul class="pricing-features">
+                        <li>Todo lo del plan estándar</li>
+                        <li>2 sesiones 1-on-1 de 60 min</li>
+                        <li>Análisis personalizado de tus cuentas</li>
+                        <li>Estrategia custom para tu negocio</li>
+                        <li>Grupo privado VIP</li>
+                        <li>Soporte prioritario por 90 días</li>
+                        <li>Revisión de contenido mensual</li>
+                        <li>BONUS: Templates de Canva PRO</li>
+                    </ul>
+                    <a href="#contacto" class="pricing-button">¡Quiero Ser VIP! ⭐</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Equipo</h3>
+                    <div class="price">$1,997</div>
+                    <p class="price-note">Para agencias</p>
+                    <ul class="pricing-features">
+                        <li>Todo lo del plan VIP</li>
+                        <li>Licencia para 5 personas</li>
+                        <li>4 sesiones grupales de equipo</li>
+                        <li>Material de onboarding para CDs</li>
+                        <li>Plantillas de SOPs</li>
+                        <li>Acceso a comunidad de agencias</li>
+                        <li>Soporte prioritario por 6 meses</li>
+                        <li>Actualizaciones exclusivas</li>
+                    </ul>
+                    <a href="#contacto" class="pricing-button">¡Quiero Plan Equipo! 🚀</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Who Section -->
+    <section class="for-who-section">
+        <div class="container">
+            <h2>¿Esta Asesoría es Para Ti? 🤔</h2>
+            <div class="for-who-grid">
+                <div class="for-who-column">
+                    <h3>✅ Esta asesoría ES para ti si:</h3>
+                    
+                    <div class="for-who-item">
+                        <span class="emoji">💼</span>
+                        <p><strong>Manejas cuentas de OFM</strong> y quieres multiplicar resultados sin depender de agencias caras.</p>
+                    </div>
+
+                    <div class="for-who-item">
+                        <span class="emoji">🎬</span>
+                        <p><strong>Eres Content Director</strong> y quieres profesionalizarte con estrategias probadas y frameworks claros.</p>
+                    </div>
+
+                    <div class="for-who-item">
+                        <span class="emoji">📱</span>
+                        <p><strong>Quieres crear reels virales</strong> que atraigan seguidores calificados y conviertan en ventas.</p>
+                    </div>
+
+                    <div class="for-who-item">
+                        <span class="emoji">📈</span>
+                        <p><strong>Estás dispuesto a implementar</strong> y seguir un plan estratégico para Instagram.</p>
+                    </div>
+
+                    <div class="for-who-item">
+                        <span class="emoji">💪</span>
+                        <p><strong>Buscas resultados reales</strong> y estás comprometido con el crecimiento de tus cuentas.</p>
+                    </div>
+
+                    <div class="for-who-item">
+                        <span class="emoji">🔥</span>
+                        <p><strong>Quieres dominar el algoritmo</strong> con técnicas probadas de viralidad y retención.</p>
+                    </div>
+                </div>
+
+                <div class="for-who-column">
+                    <h3>❌ Probablemente NO es para ti si:</h3>
+                    
+                    <div class="for-who-item not-for">
+                        <span class="emoji">😴</span>
+                        <p><strong>Buscas resultados mágicos sin esfuerzo.</strong> Esto requiere implementación y consistencia.</p>
+                    </div>
+
+                    <div class="for-who-item not-for">
+                        <span class="emoji">🎥</span>
+                        <p><strong>No te interesa crear contenido en video.</strong> Esta asesoría es específicamente para reels de Instagram.</p>
+                    </div>
+
+                    <div class="for-who-item not-for">
+                        <span class="emoji">⏰</span>
+                        <p><strong>No tienes tiempo para dedicarle.</strong> Necesitas invertir tiempo en aprender e implementar.</p>
+                    </div>
+
+                    <div class="for-who-item not-for">
+                        <span class="emoji">💸</span>
+                        <p><strong>Prefieres delegar todo a terceros.</strong> Esto es para quien quiere tomar control directo.</p>
+                    </div>
+
+                    <div class="for-who-item not-for">
+                        <span class="emoji">🚫</span>
+                        <p><strong>No trabajas con contenido para adultos.</strong> Esta asesoría está enfocada específicamente en OFM.</p>
+                    </div>
+
+                    <div class="for-who-item not-for">
+                        <span class="emoji">🤷</span>
+                        <p><strong>No estás convencido del poder de Instagram.</strong> Esto es para quien quiere dominarlo a fondo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Preguntas Frecuentes 💬</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>¿Cuál es el formato de la asesoría? 🔓</h3>
+                    <p>
+                        Todo el contenido está pre-grabado y organizado para que puedas accederlo cuando quieras, 
+                        las veces que quieras. Tienes acceso de por vida desde el momento de la compra. 
+                        Puedes verlo en computadora, tablet o celular. Todas las actualizaciones futuras están incluidas sin costo adicional.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Es solo teoría o es práctico? ✍🏼</h3>
+                    <p>
+                        Esta asesoría no podría ser más práctica. Está llena de blueprints listos para usar, 
+                        ejemplos reales con enlaces, frameworks aplicables y ejercicios para que, mientras aprendes, 
+                        crees tu estrategia. Nada de paja teórica: solo lo que funciona en el mundo real.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Funciona si soy nuevo en OFM? 🆕</h3>
+                    <p>
+                        ¡Absolutamente! La asesoría está diseñada tanto para principiantes como para profesionales. 
+                        Si estás empezando, te dará las bases sólidas que necesitas. Si ya tienes experiencia, 
+                        te llevará al siguiente nivel con estrategias avanzadas.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Qué pasa si no me funciona? 🤔</h3>
+                    <p>
+                        Te puedo garantizar TODA la claridad del mundo y que esta asesoría contiene lo mejor de 
+                        estrategias probadas con cientos de cuentas. Nadie puede garantizarte resultados específicos 
+                        porque dependen de tu esfuerzo, consistencia y nicho. Mi promesa: esto está hecho para ser 
+                        una inversión, no un gasto. Al ser un producto digital, no hay reembolsos ni devoluciones.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Necesito experiencia técnica? 💻</h3>
+                    <p>
+                        No necesitas ser experto en edición ni tener equipo profesional. Todo está explicado de forma 
+                        simple y práctica. La mayoría del contenido se puede crear con un smartphone y apps básicas. 
+                        Te enseño exactamente qué hacer paso a paso.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Cuánto tiempo me llevará? ⏰</h3>
+                    <p>
+                        Puedes ir a tu propio ritmo. Algunos completan la asesoría en una semana full-time, 
+                        otros prefieren ir más despacio. Lo importante es que tienes acceso de por vida, 
+                        así que no hay prisa. Y una vez que implementes los blueprints, crear contenido 
+                        te llevará una fracción del tiempo que inviertes ahora.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Recibiré actualizaciones? 🔄</h3>
+                    <p>
+                        ¡Sí! Instagram cambia constantemente y esta asesoría se actualiza regularmente con nuevas 
+                        estrategias, blueprints y tendencias. Todas las actualizaciones están incluidas en tu acceso 
+                        de por vida sin costo adicional.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Hay soporte disponible? 💬</h3>
+                    <p>
+                        El plan estándar incluye 30 días de soporte por email. El plan VIP incluye 90 días de 
+                        soporte prioritario más sesiones 1-on-1. El plan Equipo incluye 6 meses de soporte prioritario 
+                        y sesiones grupales. Siempre estoy disponible para ayudarte a tener éxito.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Es Hora de Hacer Crecer Tus Cuentas Como Nunca 🚀</h2>
+            <p>
+                Deja de perder tiempo y dinero en estrategias que no funcionan.<br>
+                Empieza hoy mismo a crear reels virales que multipliquen tus resultados.
+            </p>
+            <a href="#pricing" class="cta-button">¡SÍ, QUIERO ESTA ASESORÍA! 🔥</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="hero-cta" id="contacto">
+        <div class="container">
+            <h2>¿Listo para empezar? 💪</h2>
+            <p class="description">
+                Contáctame para acceder a la asesoría y empezar a transformar tus resultados hoy mismo.
+            </p>
+            <p class="description" style="font-size: 1.4rem; font-weight: 600; color: #764ba2;">
+                📧 Email: tu-email@ejemplo.com<br>
+                📱 WhatsApp: +1 (555) 123-4567<br>
+                💬 Telegram: @tuusuario
+            </p>
+            <p class="description" style="font-size: 1rem; color: #999; margin-top: 30px;">
+                Respondo en menos de 24 horas. ¡Hablemos!
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Asesoría Reels OFM. Todos los derechos reservados.</p>
+            <p style="margin-top: 10px;">Términos y Condiciones | Política de Privacidad</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        });
+
+        document.querySelectorAll('.module-card, .benefit-item, .problem-card, .testimonial-card').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
